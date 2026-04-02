@@ -75,7 +75,7 @@ export function NavMain({
       if (!hasNestedItems) {
         return (
           <SidebarMenuSubItem key={subItem.title}>
-            <SidebarMenuSubButton asChild>
+            <SidebarMenuSubButton asChild className="w-full">
               <a href={subItem.url}>
                 {renderItemVisual(subItem)}
                 <span>{subItem.title}</span>
@@ -94,14 +94,19 @@ export function NavMain({
         >
           <SidebarMenuSubItem>
             <CollapsibleTrigger asChild>
-              <SidebarMenuSubButton isActive={subItem.isActive}>
+              <SidebarMenuSubButton
+                isActive={subItem.isActive}
+                className="w-full"
+              >
                 {renderItemVisual(subItem)}
                 <span>{subItem.title}</span>
                 <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
               </SidebarMenuSubButton>
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <SidebarMenuSub>{renderSubItems(subItem.items ?? [])}</SidebarMenuSub>
+              <SidebarMenuSub className="mr-0 px-0">
+                {renderSubItems(subItem.items ?? [])}
+              </SidebarMenuSub>
             </CollapsibleContent>
           </SidebarMenuSubItem>
         </Collapsible>
@@ -161,14 +166,16 @@ export function NavMain({
               >
                 <SidebarMenuItem className={item.className}>
                   <CollapsibleTrigger asChild>
-                    <SidebarMenuButton tooltip={item.title} isActive={item.isActive}>
+                  <SidebarMenuButton tooltip={item.title} isActive={item.isActive}>
                       {renderItemVisual(item)}
                       <span>{item.title}</span>
                       <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <SidebarMenuSub>{renderSubItems(item.items ?? [])}</SidebarMenuSub>
+                    <SidebarMenuSub className="mr-0 px-0">
+                      {renderSubItems(item.items ?? [])}
+                    </SidebarMenuSub>
                   </CollapsibleContent>
                 </SidebarMenuItem>
               </Collapsible>
