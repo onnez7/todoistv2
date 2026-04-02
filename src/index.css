@@ -137,3 +137,44 @@
     @apply min-h-screen;
   }
 }
+
+@layer utilities {
+  .minimal-scrollbar {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 18%, transparent)
+      transparent;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    background-color: color-mix(
+      in oklab,
+      var(--foreground) 18%,
+      transparent
+    );
+    border: 3px solid transparent;
+    border-radius: 999px;
+  }
+
+  .minimal-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: color-mix(
+      in oklab,
+      var(--foreground) 26%,
+      transparent
+    );
+  }
+
+  .minimal-scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
