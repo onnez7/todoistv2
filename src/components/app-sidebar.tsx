@@ -6,15 +6,13 @@ import {
   IconCalendarWeek,
   IconCategoryPlus,
   IconChartHistogram,
-  IconFocus2,
-  IconFolder,
   IconHelp,
   IconInbox,
   IconInnerShadowTop,
-  IconTargetArrow,
   IconSearch,
   IconDroplet,
   IconHash,
+  IconFolder,
 } from "@tabler/icons-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -29,6 +27,30 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+
+function createSidebarImage(label: string, background: string) {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <rect width="32" height="32" rx="8" fill="${background}" />
+      <text
+        x="16"
+        y="20"
+        text-anchor="middle"
+        font-family="Inter, Arial, sans-serif"
+        font-size="12"
+        font-weight="700"
+        fill="white"
+      >
+        ${label}
+      </text>
+    </svg>
+  `
+
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
+}
+
+const meusProjetosImage = createSidebarImage("MP", "#4f46e5")
+const oriznStudioImage = createSidebarImage("OS", "#0f766e")
 
 const data = {
   user: {
@@ -93,7 +115,7 @@ const data = {
     {
       title: "Meus projetos",
       url: "#",
-      icon: IconFolder,
+      image: meusProjetosImage,
       items: [
         {
           title: "Pessoal",
@@ -110,17 +132,30 @@ const data = {
     {
       title: "Orizn Studio",
       url: "#",
-      icon: IconFolder,
+      image: oriznStudioImage,
       items: [
         {
           title: "Comercial",
           url: "#",
-          icon: IconTargetArrow,
+          icon: IconFolder,
+          isActive: true,
+          items: [
+            {
+              title: "Propostas",
+              url: "#",
+              icon: IconHash,
+            },
+            {
+              title: "Clientes",
+              url: "#",
+              icon: IconHash,
+            },
+          ],
         },
         {
           title: "Estudos",
           url: "#",
-          icon: IconFocus2,
+          icon: IconFolder,
         },
       ],
     },

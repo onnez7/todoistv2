@@ -28,12 +28,16 @@ type NavMainItem = {
   title: string
   url: string
   icon?: Icon
+  image?: string
   isActive?: boolean
   className?: string
   items?: {
     title: string
     url: string
     icon?: Icon
+    image?: string
+    isActive?: boolean
+    items?: NavMainItem["items"]
   }[]
 }
 
@@ -42,6 +46,69 @@ export function NavMain({
 }: {
   items: NavMainItem[]
 }) {
+  const renderItemVisual = (
+    item: Pick<NavMainItem, "icon" | "image" | "title">
+  ) => {
+    if (item.image) {
+      return (
+        <img
+          src={item.image}
+          alt=""
+          className="size-4 rounded-sm object-cover"
+          aria-hidden="true"
+        />
+      )
+    }
+
+    if (item.icon) {
+      const Icon = item.icon
+      return <Icon />
+    }
+
+    return null
+  }
+
+  const renderSubItems = (subItems: NonNullable<NavMainItem["items"]>) => {
+    return subItems.map((subItem) => {
+      const hasNestedItems = Boolean(subItem.items?.length)
+
+      if (!hasNestedItems) {
+        return (
+          <SidebarMenuSubItem key={subItem.title}>
+            <SidebarMenuSubButton asChild>
+              <a href={subItem.url}>
+                {renderItemVisual(subItem)}
+                <span>{subItem.title}</span>
+              </a>
+            </SidebarMenuSubButton>
+          </SidebarMenuSubItem>
+        )
+      }
+
+      return (
+        <Collapsible
+          key={subItem.title}
+          asChild
+          defaultOpen={subItem.isActive}
+          className="group/collapsible"
+        >
+          <SidebarMenuSubItem>
+            <CollapsibleTrigger asChild>
+              <SidebarMenuSubButton isActive={subItem.isActive}>
+                {renderItemVisual(subItem)}
+                <span>{subItem.title}</span>
+                <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+              </SidebarMenuSubButton>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>{renderSubItems(subItem.items ?? [])}</SidebarMenuSub>
+            </CollapsibleContent>
+          </SidebarMenuSubItem>
+        </Collapsible>
+      )
+    })
+  }
+
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
@@ -77,7 +144,7 @@ export function NavMain({
                     isActive={item.isActive}
                   >
                     <a href={item.url}>
-                      {item.icon && <item.icon />}
+                      {renderItemVisual(item)}
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
@@ -95,24 +162,13 @@ export function NavMain({
                 <SidebarMenuItem className={item.className}>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton tooltip={item.title} isActive={item.isActive}>
-                      {item.icon && <item.icon />}
+                      {renderItemVisual(item)}
                       <span>{item.title}</span>
                       <IconChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
-                              {subItem.icon && <subItem.icon />}
-                              <span>{subItem.title}</span>
-                            </a>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
+                    <SidebarMenuSub>{renderSubItems(item.items ?? [])}</SidebarMenuSub>
                   </CollapsibleContent>
                 </SidebarMenuItem>
               </Collapsible>
