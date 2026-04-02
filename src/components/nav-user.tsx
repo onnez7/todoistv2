@@ -86,15 +86,15 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <IconUserCircle />
-                Account
+                Conta
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconCreditCard />
-                Billing
+                Pagamentos
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconNotification />
-                Notifications
+                Notificação
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

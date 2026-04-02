@@ -2,24 +2,23 @@
 
 import * as React from "react"
 import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
+  IconCalendar,
+  IconCalendarWeek,
+  IconCategoryPlus,
+  IconChartHistogram,
+  IconClock,
+  IconFocus2,
   IconFolder,
   IconHelp,
+  IconInbox,
   IconInnerShadowTop,
-  IconListDetails,
-  IconReport,
+  IconListCheck,
+  IconStar,
+  IconTargetArrow,
   IconSearch,
   IconSettings,
-  IconUsers,
 } from "@tabler/icons-react"
 
-import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
@@ -35,117 +34,116 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Roni Damaceno",
+    email: "roni@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Entrada",
       url: "#",
-      icon: IconDashboard,
+      icon: IconInbox,
     },
     {
-      title: "Lifecycle",
+      title: "Hoje",
       url: "#",
-      icon: IconListDetails,
+      icon: IconCalendar,
     },
     {
-      title: "Analytics",
+      title: "Em breve",
       url: "#",
-      icon: IconChartBar,
+      icon: IconCalendarWeek,
     },
     {
-      title: "Projects",
+      title: "Filtros",
+      url: "#",
+      icon: IconCategoryPlus,
+    },
+    {
+      title: "Relatorios",
+      url: "#",
+      icon: IconChartHistogram,
+    },
+    {
+      title: "Favoritos",
+      url: "#",
+      icon: IconStar,
+      className: "mt-4",
+      isActive: true,
+      items: [
+        {
+          title: "Exbir tudo",
+          url: "#",
+          icon: IconListCheck,
+        },
+        {
+          title: "Sem data de vencimento",
+          url: "#",
+          icon: IconClock,
+        },
+        {
+          title: "Sem Prioridade",
+          url: "#",
+          icon: IconTargetArrow,
+        },
+        {
+          title: "Tarefa recorrente",
+          url: "#",
+          icon: IconCalendarWeek,
+        },
+      ],
+    },
+    {
+      title: "Meus projetos",
       url: "#",
       icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
       items: [
         {
-          title: "Active Proposals",
+          title: "Pessoal",
           url: "#",
+          icon: IconInbox,
         },
         {
-          title: "Archived",
+          title: "Estudos",
           url: "#",
+          icon: IconFocus2,
         },
       ],
     },
     {
-      title: "Proposal",
-      icon: IconFileDescription,
+      title: "Orizn Studio",
       url: "#",
+      icon: IconFolder,
       items: [
         {
-          title: "Active Proposals",
+          title: "Comercial",
           url: "#",
+          icon: IconTargetArrow,
         },
         {
-          title: "Archived",
+          title: "Estudos",
           url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
+          icon: IconFocus2,
         },
       ],
     },
   ],
+
   navSecondary: [
     {
-      title: "Settings",
+      title: "Configurações",
       url: "#",
       icon: IconSettings,
     },
     {
-      title: "Get Help",
+      title: "Ajuda e recursos",
       url: "#",
       icon: IconHelp,
     },
     {
-      title: "Search",
+      title: "Buscar",
       url: "#",
       icon: IconSearch,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
     },
   ],
 }
@@ -162,7 +160,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <IconInnerShadowTop className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <span className="text-base font-semibold">Todoist</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -170,7 +168,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
