@@ -6,17 +6,15 @@ import {
   IconCalendarWeek,
   IconCategoryPlus,
   IconChartHistogram,
-  IconClock,
   IconFocus2,
   IconFolder,
   IconHelp,
   IconInbox,
   IconInnerShadowTop,
-  IconListCheck,
-  IconStar,
   IconTargetArrow,
   IconSearch,
-  IconSettings,
+  IconDroplet,
+  IconHash,
 } from "@tabler/icons-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -67,29 +65,28 @@ const data = {
     {
       title: "Favoritos",
       url: "#",
-      icon: IconStar,
       className: "mt-4",
       isActive: true,
       items: [
         {
           title: "Exbir tudo",
           url: "#",
-          icon: IconListCheck,
+          icon: IconDroplet,
         },
         {
           title: "Sem data de vencimento",
           url: "#",
-          icon: IconClock,
+          icon: IconDroplet,
         },
         {
           title: "Sem Prioridade",
           url: "#",
-          icon: IconTargetArrow,
+          icon: IconDroplet,
         },
         {
           title: "Tarefa recorrente",
           url: "#",
-          icon: IconCalendarWeek,
+          icon: IconDroplet,
         },
       ],
     },
@@ -101,12 +98,12 @@ const data = {
         {
           title: "Pessoal",
           url: "#",
-          icon: IconInbox,
+          icon: IconHash,
         },
         {
           title: "Estudos",
           url: "#",
-          icon: IconFocus2,
+          icon: IconHash,
         },
       ],
     },
@@ -130,11 +127,6 @@ const data = {
   ],
 
   navSecondary: [
-    {
-      title: "Configurações",
-      url: "#",
-      icon: IconSettings,
-    },
     {
       title: "Ajuda e recursos",
       url: "#",
@@ -168,9 +160,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
+        <NavSecondary items={data.navSecondary} />
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>

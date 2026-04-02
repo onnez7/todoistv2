@@ -1,10 +1,13 @@
 "use client"
 
 import {
-  IconCreditCard,
   IconDotsVertical,
+  IconGift,
   IconLogout,
   IconNotification,
+  IconPlus,
+  IconRefresh,
+  IconSettings,
   IconUserCircle,
 } from "@tabler/icons-react"
 
@@ -88,19 +91,35 @@ export function NavUser({
                 <IconUserCircle />
                 Conta
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconCreditCard />
-                Pagamentos
+              <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                <IconSettings />
+                Configurações
               </DropdownMenuItem>
+               <DropdownMenuItem>
+                <IconPlus />
+                Adicionar uma Equipe
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <IconNotification />
                 Notificação
               </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconGift />
+                Novidades
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <IconRefresh />
+                Sincronizar
+              </DropdownMenuItem>
+
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <IconLogout />
-              Log out
+              Sair
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
