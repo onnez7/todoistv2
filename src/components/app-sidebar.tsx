@@ -163,14 +163,14 @@ const data = {
 
   navSecondary: [
     {
-      title: "Ajuda e recursos",
-      url: "#",
-      icon: IconHelp,
-    },
-    {
       title: "Buscar",
       url: "#",
       icon: IconSearch,
+    },
+    {
+      title: "Ajuda e recursos",
+      url: "#",
+      icon: IconHelp,
     },
   ],
 }
