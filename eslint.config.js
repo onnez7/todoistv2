@@ -20,4 +20,17 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+  {
+    files: ['src/components/data-table.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+      'react-hooks/incompatible-library': 'off',
+    },
+  },
 ])
